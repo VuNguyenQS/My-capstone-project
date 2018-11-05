@@ -172,8 +172,8 @@ class customNYUv2(data.Dataset):
         #classes, class_to_idx = find_classes(root)
         #imgs = make_dataset(root, class_to_idx)
         imgs = h5py.File(root)
-        assert len(imgs)>0, "Found 0 images in subfolders of: " + root + "\n"
-        print("Found {} images in {} folder.".format(len(imgs), type))
+        #assert len(imgs)>0, "Found 0 images in subfolders of: " + root + "\n"
+        #print("Found {} images in {} folder.".format(len(imgs), type))
         self.root = root
         self.imgs = imgs
         self.lists = lists
@@ -224,7 +224,7 @@ class customNYUv2(data.Dataset):
         #path, target = self.imgs[index]
         #rgb, depth = self.loader(path)
         img_idx = self.lists[index]
-        rgb = self.imgs[img_idx]['images']
+        rgb = self.imgs['images'][img_idx]
         ra_rgb = rgb.transpose(2, 1, 0)
         depth = self.imgs[img_idx]['depths']
         ra_depth = depth.transpose(1, 0)
